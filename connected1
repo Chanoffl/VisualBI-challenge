@@ -1,0 +1,41 @@
+//I'm solving using DFS(Depth First Search Algorithm)
+
+#include <iostream> 
+using namespace std; 
+  
+#define ROW 4 
+#define COL 4 
+  
+int safe(int M[][COL], int row, int col, bool visited[][COL]) 
+{ 
+    return (row >= 0) && (row < ROW) && (col >= 0) && (col < COL) && (M[row][col] && !visited[row][col]); 
+} 
+  
+void DFS(int M[][COL], int row, int col, bool visited[][COL]) 
+{ 
+    static int rowNumber[] = { -1, -1, -1, 0, 0, 1, 1, 1 }; 
+    static int colNumber[] = { -1, 0, 1, -1, 1, -1, 0, 1 }; 
+  
+    //This cell is visited 
+    visited[row][col] = true; 
+  
+    for (int k = 0; k < 8; ++k) {
+        if (safe(M, row + rowNumberbr[k], col + colNumber[k], visited)) 
+        { 
+                DFS(M, row + rowNumber[k], col + colNumber[k], visited); 
+        }
+    }
+} 
+  
+ int main() 
+{ 
+    int a[][COL] = { { 1, 1, 1, 1 }, 
+                     { 0, 0, 1, 1 }, 
+                     { 1, 0, 1, 1}, 
+                     { 1, 1, 0, 1 }  
+                   }; 
+  
+    cout << "Number of connected 1's is: "; 
+  
+    return 0; 
+} 
